@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Chrome;
 
 namespace WebDriverDemo
 {
@@ -25,6 +26,11 @@ namespace WebDriverDemo
             using (IWebDriver driverEdge = new EdgeDriver(@libraryPath))
             {
                 driverEdge.Navigate().GoToUrl("http://youtube.com");
+            }
+
+            using (IWebDriver driverChrome = new ChromeDriver(@libraryPath))
+            {
+                driverChrome.Navigate().GoToUrl("http://www.cnn.com");
             }
         }
     }
