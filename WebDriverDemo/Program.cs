@@ -15,35 +15,54 @@ namespace WebDriverDemo
     {
         static void Main(string[] args)
         {
-            // GeckoDriver added to PATH var
-            using(IWebDriver driver = new FirefoxDriver())
-            {
-                driver.Navigate().GoToUrl("http://www.google.com");
+            //1) WebDriver Basics
+            //// GeckoDriver added to PATH var
+            //using(IWebDriver driver = new FirefoxDriver())
+            //{
+            //    driver.Navigate().GoToUrl("http://www.google.com");
 
-                // find an element tied to google's search box
-                IWebElement searchBox = driver.FindElement(By.Name("q"));
-                // send a key string to the search box.
-                searchBox.SendKeys("pluralsight");
+            //    // find an element tied to google's search box
+            //    IWebElement searchBox = driver.FindElement(By.Name("q"));
+            //    // send a key string to the search box.
+            //    searchBox.SendKeys("pluralsight");
 
-                searchBox.Submit();
-                
-                // click the Images link to view pluralsight images
-                IWebElement elem = driver.FindElements(By.ClassName("hdtb-mitem"))[4];
-                IWebElement imagesLink = elem.FindElement(By.TagName("a"));
-                imagesLink.Click();
-            }
+            //    searchBox.Submit();
 
-            // MicrosoftDriver located in libraryPath
+            //    // click the Images link to view pluralsight images
+            //    IWebElement elem = driver.FindElements(By.ClassName("hdtb-mitem"))[4];
+            //    IWebElement imagesLink = elem.FindElement(By.TagName("a"));
+            //    imagesLink.Click();
+            //}
+
+            //// MicrosoftDriver located in libraryPath
+            //string libraryPath = "C:\\Libraries\\";
+            //using (IWebDriver driverEdge = new EdgeDriver(@libraryPath))
+            //{
+            //    driverEdge.Navigate().GoToUrl("http://youtube.com");
+            //}
+
+            //// ChromeDriver located in libraryPath
+            //using (IWebDriver driverChrome = new ChromeDriver(@libraryPath))
+            //{
+            //    driverChrome.Navigate().GoToUrl("http://www.cnn.com");
+            //}
+
+            //2) WebDriver Advanced
             string libraryPath = "C:\\Libraries\\";
-            using (IWebDriver driverEdge = new EdgeDriver(@libraryPath))
+            using (IWebDriver driver = new ChromeDriver(libraryPath))
             {
-                driverEdge.Navigate().GoToUrl("http://youtube.com");
-            }
+                // Load TestPage.html
+                driver.Url = @"file:///C:/Workspace/SeleniumDemo/WebDriverDemo/WebDriverDemo/TestPage.html";
 
-            // ChromeDriver located in libraryPath
-            using (IWebDriver driverChrome = new ChromeDriver(@libraryPath))
-            {
-                driverChrome.Navigate().GoToUrl("http://www.cnn.com");
+                // Get data by selecting the radio buttons
+                IWebElement radioBtn = driver.FindElements(By.Name("color"))[0];
+                radioBtn.Click();
+
+                // Wait for the page to load, timeout after 10 seconds
+                //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
+                //DEBUGGING THE CODE ALSO HELPS WALKTHROUGH IT.
+                Console.WriteLine("Page title is: " + driver.Title);
             }
         }
     }
