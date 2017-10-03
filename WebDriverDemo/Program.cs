@@ -55,14 +55,20 @@ namespace WebDriverDemo
                 driver.Url = @"file:///C:/Workspace/SeleniumDemo/WebDriverDemo/WebDriverDemo/TestPage.html";
 
                 // Get data by selecting the radio buttons
-                IWebElement radioBtn = driver.FindElements(By.Name("color"))[0];
-                radioBtn.Click();
+                var radioBtns = driver.FindElements(By.Name("color"));
+                foreach(var radioBtn in radioBtns)
+                {
+                    if(radioBtn.Selected)
+                    {
+                        // get the value attribute of the radio button in the collection of buttons
+                        Console.WriteLine(radioBtn.GetAttribute("value"));
+                    }
+                }
 
                 // Wait for the page to load, timeout after 10 seconds
                 //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
                 //DEBUGGING THE CODE ALSO HELPS WALKTHROUGH IT.
-                Console.WriteLine("Page title is: " + driver.Title);
             }
         }
     }
