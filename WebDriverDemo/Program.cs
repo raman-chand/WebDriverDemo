@@ -69,6 +69,14 @@ namespace WebDriverDemo
                 //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
 
                 //DEBUGGING THE CODE ALSO HELPS WALKTHROUGH IT.
+
+                IWebElement checkbox = driver.FindElement(By.Id("check1"));
+                checkbox.Click();
+                checkbox.Click();
+
+                IWebElement select = driver.FindElement(By.Id("select"));
+                var tomOption = select.FindElements(By.TagName("option"))[2];
+                tomOption.Click();
             }
         }
     }
