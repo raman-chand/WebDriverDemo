@@ -16,23 +16,36 @@ namespace WebDriverDemo
     {
         static void Main(string[] args)
         {
-            //1) WebDriver Basics
+            ////1) WebDriver Basics
             //// GeckoDriver added to PATH var
-            //using(IWebDriver driver = new FirefoxDriver())
+            //using (IWebDriver driverFF = new FirefoxDriver())
             //{
-            //    driver.Navigate().GoToUrl("http://www.google.com");
+            //    driverFF.Navigate().GoToUrl("http://www.google.com");
 
             //    // find an element tied to google's search box
-            //    IWebElement searchBox = driver.FindElement(By.Name("q"));
+            //    IWebElement searchBox = driverFF.FindElement(By.Name("q"));
             //    // send a key string to the search box.
             //    searchBox.SendKeys("pluralsight");
 
             //    searchBox.Submit();
 
-            //    // click the Images link to view pluralsight images
-            //    IWebElement elem = driver.FindElements(By.ClassName("hdtb-mitem"))[4];
-            //    IWebElement imagesLink = elem.FindElement(By.TagName("a"));
-            //    imagesLink.Click();
+            //    //Explicit Wait
+            //    WebDriverWait wait = new WebDriverWait(driverFF, TimeSpan.FromSeconds(5));
+            //    //wrap our call with a wait.
+            //    IWebElement imagesLink = wait.Until(d =>
+            //    {
+            //        var elements = driverFF.FindElements(By.ClassName("hdtb-mitem"));
+            //        if (elements.Count > 0)
+            //        {
+            //            return elements[0];
+            //        }
+            //        return null;
+            //    });
+
+                // click the Images link to view pluralsight images
+                //IWebElement elem = driverFF.FindElements(By.ClassName("hdtb-mitem"))[4];
+                //IWebElement imagesLink = elem.FindElement(By.TagName("a"));
+                //imagesLink.Click();
             //}
 
             //// MicrosoftDriver located in libraryPath
