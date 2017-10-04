@@ -85,11 +85,14 @@ namespace WebDriverDemo
                 var selectElem = new SelectElement(select);
                 selectElem.SelectByText("Frank");
 
-
                 IWebElement outTable = driver.FindElement(By.TagName("table"));
                 IWebElement innerTable = outTable.FindElement(By.TagName("table"));
                 IWebElement row = innerTable.FindElements(By.TagName("td"))[1];
                 Console.WriteLine(row.Text);
+
+                //Using XPATH - added more complexity, but lessened the code
+                IWebElement rowSecond = driver.FindElement(By.XPath("/html/body/table/tbody/tr/td[2]/table/tbody/tr[2]/td"));
+                Console.WriteLine(rowSecond.Text);
             }
         }
     }
