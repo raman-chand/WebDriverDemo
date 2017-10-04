@@ -8,6 +8,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace WebDriverDemo
 {
@@ -75,8 +76,14 @@ namespace WebDriverDemo
                 checkbox.Click();
 
                 IWebElement select = driver.FindElement(By.Id("select"));
+
                 var tomOption = select.FindElements(By.TagName("option"))[2];
                 tomOption.Click();
+
+                // Wrapper for the Select Element, in order to easily select the option to test
+                // without utilizing the index
+                var selectElem = new SelectElement(select);
+                selectElem.SelectByText("Frank");
             }
         }
     }
