@@ -84,6 +84,12 @@ namespace WebDriverDemo
                 // without utilizing the index
                 var selectElem = new SelectElement(select);
                 selectElem.SelectByText("Frank");
+
+
+                IWebElement outTable = driver.FindElement(By.TagName("table"));
+                IWebElement innerTable = outTable.FindElement(By.TagName("table"));
+                IWebElement row = innerTable.FindElements(By.TagName("td"))[1];
+                Console.WriteLine(row.Text);
             }
         }
     }
